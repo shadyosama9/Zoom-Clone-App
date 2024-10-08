@@ -6,6 +6,13 @@ pipeline{
 
         nodejs 'Node20'
     }
+
+    environment{
+
+        DOCKER_REGISTRY = 'shady25/zoomclone'
+        DOCKER_CRED = 'DOCKER_CREDS'
+    }
+
     stages {
 
         stage('Create Or Update .env File') {
@@ -70,6 +77,29 @@ pipeline{
                 sh 'trivy fs . > trivy-code.txt'
             }
         }
-    }
 
+        stage('Building Docker Image'){
+            steps{
+                script{
+                    dockerImg = docker.build $DOCKER_REGISTRY + ":V$BUILD_NUMBER"
+                }
+            }
+        }
+
+        stage('Running Trivy On Docker'){
+            steps{
+                sh "trivy image $DOCKER_REGISTRY:V$BUILD_NUMBER  > trivy-docker.txt"
+            }
+        }
+
+        stage('Uploading To DokcerHub'){
+            steps{
+                script {
+                    docker.withRegistry('', DOCKER_CRED){
+                        dockerImg.push ("V$BUILD_NUMBER")
+                    }
+                }
+            }        
+        }
+    }
 }
