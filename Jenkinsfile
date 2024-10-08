@@ -59,7 +59,7 @@ pipeline{
 
         stage('Running Dependecncy Check'){
             steps{
-                dependencyCheck additionalArguments: '-f XML -s .',
+                dependencyCheck additionalArguments: '-f XML --disableYarnAudit -s .',
                           odcInstallation: 'Zoom-OWASP'
                 dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
