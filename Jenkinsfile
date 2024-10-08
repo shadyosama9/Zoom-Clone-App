@@ -38,7 +38,7 @@ pipeline{
             steps {
 
                 sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=zoom-clone-project \
-                    -Dsonar.projectName=Zoom-Clone-Project \
+                    -Dsonar.projectName=Zoom-Clone \
                     -Dsonar.organization=zoom-clone \
                     -Dsonar.projectVersion=1.0 \
                     -Dsonar.host.url=https://sonarcloud.io
