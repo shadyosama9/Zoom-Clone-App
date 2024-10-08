@@ -9,8 +9,8 @@ pipeline{
 
     environment{
 
-        DOCKER_REGISTRY = 'shady25/zoomclone'
-        DOCKER_CRED = 'DOCKER_CREDS'
+        DOCKER_REGISTRY = "shady25/zoomclone"
+        DOCKER_CRED = "DOCKER_CREDS"
     }
 
     stages {
