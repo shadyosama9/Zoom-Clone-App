@@ -41,7 +41,8 @@ pipeline{
                     -Dsonar.projectName=Zoom-Clone-Project \
                     -Dsonar.organization=zoom-clone \
                     -Dsonar.projectVersion=1.0 \
-                    -Dsonar.host.url=https://sonarcloud.io
+                    -Dsonar.host.url=https://sonarcloud.io \
+                    -Dsonar.login=$SonarCloud-Token
                     '''
             }
         }
