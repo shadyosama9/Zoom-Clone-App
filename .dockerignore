@@ -1,2 +1,5 @@
 Jenkinsfile
 *.md
+node_modules/
+trivy-code.txt
+dependency-check-report.xml
