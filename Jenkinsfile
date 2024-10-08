@@ -2,6 +2,10 @@ pipeline{
 
     agent any
 
+    tools {
+
+        nodejs 'Node20'
+    }
     stages {
 
         stage('Create Or Update .env File') {
@@ -43,6 +47,13 @@ pipeline{
                         -Dsonar.projectVersion=1.0 
                         '''
                 }
+            }
+        }
+
+
+        stage('Install Dependencies For Check'){
+            steps{
+                sh 'npm install'
             }
         }
     }
