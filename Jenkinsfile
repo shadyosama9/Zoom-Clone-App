@@ -41,7 +41,7 @@ pipeline{
 
             steps {
                 withSonarQubeEnv('SonarCloud'){
-                    sh '''${scannerHome}/bin/sonar-scanner -X -Dsonar.projectKey=zoom-clone-project \
+                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=zoom-clone-project \
                         -Dsonar.projectName=Zoom-Clone-Project \
                         -Dsonar.organization=zoom-clone \
                         -Dsonar.projectVersion=1.0 
@@ -54,6 +54,20 @@ pipeline{
         stage('Install Dependencies For Check'){
             steps{
                 sh 'npm install'
+            }
+        }
+
+        stage('Running Dependecncy Check'){
+            steps{
+                dependencyCheck additionalArguments: '-f XML -s .',
+                          odcInstallation: 'Zoom-OWASP'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
+
+        stage('Running Trivy Analysis'){
+            steps{
+                sh 'trivy fs . > trivy-code.txt'
             }
         }
     }
