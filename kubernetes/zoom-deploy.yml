@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  zoom-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: zoom
+  template:
+    metadata:
+      labels:
+        app: zoom
+    spec:
+      containers:
+      - name: zoom-clone
+        image: shady25/zoomclone:V21
+        ports:
+        - containerPort: 3000
