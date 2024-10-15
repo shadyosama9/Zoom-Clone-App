@@ -4,3 +4,4 @@ node_modules/
 trivy-code.txt
 trivy-docker.txt
 dependency-check-report.xml
+kubernetes
