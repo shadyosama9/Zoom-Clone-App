@@ -105,6 +105,18 @@ pipeline{
             }        
         }
 
+        stage('CleanUp'){
+            steps{
+
+                sh '''
+
+                    docker system prune -f
+                    rm -f node_modules
+                '''
+            }
+        }
+
+
 
         stage('Pushing Image Version To K8s Repo'){
             steps{
@@ -117,7 +129,7 @@ pipeline{
                             git clone ${REPO_URL}
 
                             cd Zoom-Clone-K8s
-                            sed -i "s#shady25/zoomclone:V21#shady25/zoomclone:V$BUILD_NUMBER#g" ./kubernetes/zoom-deploy.yml
+                            sed -i "s#shady25/zoomclone:V[0-9]*#shady25/zoomclone:V$BUILD_NUMBER#g" ./kubernetes/zoom-deploy.yml
                             
                             git config --global user.email "shadyosama554@gmail.com"
                             git config --global user.name "${GIT_USERNAME}"
