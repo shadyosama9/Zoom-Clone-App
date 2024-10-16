@@ -105,8 +105,12 @@ pipeline{
 
         stage('Pushing Image Version To K8s Rep'){
             steps{
+                // Creating Temp Directory For The K8s Repo
+                mkdir -p k8s-temp
+                cd k8s-temp
+                
                 // Cloning The Repo
-                git branch: 'main', url: 'https://github.com/shadyosama9/Zoom-Clone-K8s.git'
+                sh "git clone https://github.com/shadyosama9/Zoom-Clone-K8s.git"
 
 
                 // Changing The Image Tag
@@ -117,6 +121,8 @@ pipeline{
                 sh '''
                     git config user.email "shadyosama554@gmail.com"
                     git config user.name "shadyosama9"
+                    git remote add target https://github.com/shadyosama9/Zoom-Clone-K8s.git
+
 
                     git add .
                     git commit -m "changing image tag to V:$BUILD_NUMBER"
