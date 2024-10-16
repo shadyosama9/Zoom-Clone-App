@@ -12,6 +12,7 @@ pipeline{
         DOCKER_REGISTRY = "shady25/zoomclone"
         DOCKER_CRED = "DOCKER_CREDS"
         REPO_NAME = "Zoom-Clone-K8s"
+        REPO_URL = "https://github.com/shadyosama9/Zoom-Clone-K8s.git"
         GIT_USERNAME = "shadyosama9"
     }
 
