@@ -126,7 +126,7 @@ pipeline{
 
                     git add .
                     git commit -m "changing image tag to V:$BUILD_NUMBER"
-                    git push
+                    git push target main
                 '''
             }
         }
