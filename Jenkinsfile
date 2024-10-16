@@ -59,11 +59,11 @@ pipeline{
         // }
 
 
-        stage('Install Dependencies For Check'){
-            steps{
-                sh 'npm install'
-            }
-        }
+        // stage('Install Dependencies For Check'){
+        //     steps{
+        //         sh 'npm install'
+        //     }
+        // }
 
         // stage('Running Dependecncy Check'){
         //     steps{
