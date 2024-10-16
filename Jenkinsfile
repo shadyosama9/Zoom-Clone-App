@@ -110,7 +110,7 @@ pipeline{
 
 
                 // Changing The Image Tag
-                sh "sed -i 's/shady25/zoomclone:V21/shady25/zoomclone:V$BUILD_NUMBER' ./kubernetes/zoom-deploy.yml"
+                sh "sed -i 's#shady25/zoomclone:V21#shady25/zoomclone:V$BUILD_NUMBER' ./kubernetes/zoom-deploy.yml"
 
 
                 // Pushing The Changes To The Repo
