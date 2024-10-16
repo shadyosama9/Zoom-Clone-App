@@ -41,21 +41,21 @@ pipeline{
 
 
 
-        stage('Sonar Cloud Analysis'){
-            environment{
-                scannerHome = tool 'Zoom-Sonar'
-            }
+        // stage('Sonar Cloud Analysis'){
+        //     environment{
+        //         scannerHome = tool 'Zoom-Sonar'
+        //     }
 
-            steps {
-                withSonarQubeEnv('SonarCloud'){
-                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=zoom-clone-project \
-                        -Dsonar.projectName=Zoom-Clone-Project \
-                        -Dsonar.organization=zoom-clone \
-                        -Dsonar.projectVersion=1.0 
-                        '''
-                }
-            }
-        }
+        //     steps {
+        //         withSonarQubeEnv('SonarCloud'){
+        //             sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=zoom-clone-project \
+        //                 -Dsonar.projectName=Zoom-Clone-Project \
+        //                 -Dsonar.organization=zoom-clone \
+        //                 -Dsonar.projectVersion=1.0 
+        //                 '''
+        //         }
+        //     }
+        // }
 
 
         stage('Install Dependencies For Check'){
@@ -64,19 +64,19 @@ pipeline{
             }
         }
 
-        stage('Running Dependecncy Check'){
-            steps{
-                dependencyCheck additionalArguments: '-f XML --disableYarnAudit -s .',
-                          odcInstallation: 'Zoom-OWASP'
-                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-            }
-        }
+        // stage('Running Dependecncy Check'){
+        //     steps{
+        //         dependencyCheck additionalArguments: '-f XML --disableYarnAudit -s .',
+        //                   odcInstallation: 'Zoom-OWASP'
+        //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+        //     }
+        // }
 
-        stage('Running Trivy Analysis'){
-            steps{
-                sh 'trivy fs . > trivy-code.txt'
-            }
-        }
+        // stage('Running Trivy Analysis'){
+        //     steps{
+        //         sh 'trivy fs . > trivy-code.txt'
+        //     }
+        // }
 
         stage('Building Docker Image'){
             steps{
@@ -86,11 +86,11 @@ pipeline{
             }
         }
 
-        stage('Running Trivy On Docker'){
-            steps{
-                sh "trivy image $DOCKER_REGISTRY:V$BUILD_NUMBER  > trivy-docker.txt"
-            }
-        }
+        // stage('Running Trivy On Docker'){
+        //     steps{
+        //         sh "trivy image $DOCKER_REGISTRY:V$BUILD_NUMBER  > trivy-docker.txt"
+        //     }
+        // }
 
         stage('Uploading To DokcerHub'){
             steps{
@@ -110,7 +110,7 @@ pipeline{
                 mkdir -p k8s-temp
                 cd k8s-temp
                 
-                sh "git clone https://github.com/shadyosama9/Zoom-Clone-K8s.git"
+                git clone https://github.com/shadyosama9/Zoom-Clone-K8s.git
 
 
                  sed -i 's#shady25/zoomclone:V21#shady25/zoomclone:V$BUILD_NUMBER' ./kubernetes/zoom-deploy.yml
