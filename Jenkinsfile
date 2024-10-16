@@ -12,6 +12,7 @@ pipeline{
         DOCKER_REGISTRY = "shady25/zoomclone"
         DOCKER_CRED = "DOCKER_CREDS"
         REPO_URL = "https://github.com/shadyosama9/Zoom-Clone-K8s.git"
+        GIT_USERNAME = "shadyosama9"
     }
 
     stages {
@@ -116,9 +117,9 @@ pipeline{
 
                             cd Zoom-Clone-K8s
                             sed -i "s#shady25/zoomclone:V21#shady25/zoomclone:V$BUILD_NUMBER#g" ./kubernetes/zoom-deploy.yml
-
+                            
+                            git config --global user.email "shadyosama554@gmail.com"
                             git config --global user.name "${GIT_USERNAME}"
-                            git config --global user.password "${GIT_PASSWORD}"
 
                             git add .
                             git commit -m "changing image tag to V:$BUILD_NUMBER"
