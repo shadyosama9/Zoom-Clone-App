@@ -101,5 +101,28 @@ pipeline{
                 }
             }        
         }
+
+
+        stage('Pushing Image Version To K8s Rep'){
+            steps{
+                // Cloning The Repo
+                git branch: 'main', url: 'https://github.com/shadyosama9/Zoom-Clone-K8s.git'
+
+
+                // Changing The Image Tag
+                sh "sed -i 's/shady25/zoomclone:V21/shady25/zoomclone:V$BUILD_NUMBER' ./kubernetes/zoom-deploy.yml"
+
+
+                // Pushing The Changes To The Repo
+                sh '''
+                    git config user.email "shadyosama554@gmail.com"
+                    git config user.name "shadyosama9"
+
+                    git add .
+                    git commit -m "changing image tag to V:$BUILD_NUMBER"
+                    git push
+                '''
+            }
+        }
     }
 }
