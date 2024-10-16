@@ -105,28 +105,25 @@ pipeline{
 
         stage('Pushing Image Version To K8s Rep'){
             steps{
-                // Creating Temp Directory For The K8s Repo
+                sh '''
+
                 mkdir -p k8s-temp
                 cd k8s-temp
                 
-                // Cloning The Repo
                 sh "git clone https://github.com/shadyosama9/Zoom-Clone-K8s.git"
 
 
-                // Changing The Image Tag
-                sh "sed -i 's#shady25/zoomclone:V21#shady25/zoomclone:V$BUILD_NUMBER' ./kubernetes/zoom-deploy.yml"
+                 sed -i 's#shady25/zoomclone:V21#shady25/zoomclone:V$BUILD_NUMBER' ./kubernetes/zoom-deploy.yml
 
 
-                // Pushing The Changes To The Repo
-                sh '''
-                    git config user.email "shadyosama554@gmail.com"
-                    git config user.name "shadyosama9"
-                    git remote add target https://github.com/shadyosama9/Zoom-Clone-K8s.git
+                git config user.email "shadyosama554@gmail.com"
+                git config user.name "shadyosama9"
+                git remote add target https://github.com/shadyosama9/Zoom-Clone-K8s.git
 
 
-                    git add .
-                    git commit -m "changing image tag to V:$BUILD_NUMBER"
-                    git push target main
+                git add .
+                git commit -m "changing image tag to V:$BUILD_NUMBER"
+                git push target main
                 '''
             }
         }
