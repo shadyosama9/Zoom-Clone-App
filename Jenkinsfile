@@ -114,7 +114,7 @@ pipeline{
                     git clone ${REPO_URL}
 
 
-                    sed -i 's#shady25/zoomclone:V21/shady25/zoomclone:V$BUILD_NUMBER' ./kubernetes/zoom-deploy.yml
+                    sed -i "s#shady25/zoomclone:V21#shady25/zoomclone:V$BUILD_NUMBER#g" ./kubernetes/zoom-deploy.yml
 
 
                     git config user.email "shadyosama554@gmail.com"
