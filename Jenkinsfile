@@ -113,11 +113,11 @@ pipeline{
                     
                     git clone ${REPO_URL}
 
+                    cd Zoom-Clone-K8s
+                    sed -i "s#shady25/zoomclone:V21#shady25/zoomclone:V$BUILD_NUMBER#g" ./kubernetes/zoom-deploy.yml
 
-                    sed -i "s#shady25/zoomclone:V21#shady25/zoomclone:V$BUILD_NUMBER#g" ./Zoom-Clone-K8s/kubernetes/zoom-deploy.yml
-
-
-                    git config user.email "shadyosama554@gmail.com"
+                    git config --global --add safe.directory /var/lib/jenkins/workspace/Zoom-Clone/k8s-temp/Zoom-Clone-K8s
+                    git config user.email "shadyosama554@gmail.com" 
                     git config user.name "shadyosama9"
 
 
