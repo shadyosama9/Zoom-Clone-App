@@ -108,11 +108,8 @@ pipeline{
         stage('CleanUp'){
             steps{
 
-                sh '''
-
-                    docker system prune -f
-                    rm -f node_modules
-                '''
+                sh "docker system prune -f"
+                sh "rm -rf node_modules"
             }
         }
 
@@ -139,8 +136,8 @@ pipeline{
                             git push https://${GITHUB_TOKEN}@github.com/${GIT_USERNAME}/${REPO_NAME} HEAD:main
 
 
-                            rm -rf k8s-temp
                         '''
+                        sh "rm -rf k8s-temp/"
                 }
             }
         }
