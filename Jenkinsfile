@@ -123,7 +123,7 @@ pipeline{
 
                     git add .
                     git commit -m "changing image tag to V:$BUILD_NUMBER"
-                    git push target main
+                    git push
 
                     rm -rf k8s-temp
                 '''
