@@ -124,7 +124,7 @@ pipeline{
 
                             git add .
                             git commit -m "changing image tag to V:$BUILD_NUMBER"
-                            git push https://${GITHUB_TOKEN}@github.com/$${GIT_USERNAME}/${REPO_NAME} HEAD:main
+                            git push https://${GITHUB_TOKEN}@github.com/$${GIT_USERNAME}/${REPO_NAME}.git HEAD:main
 
 
                             rm -rf k8s-temp
