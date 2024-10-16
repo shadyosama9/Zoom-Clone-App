@@ -106,27 +106,31 @@ pipeline{
 
         stage('Pushing Image Version To K8s Repo'){
             steps{
-                sh '''
+                script{
+                     withCredentials([usernamePassword(credentialsId: 'GitHub-Creds', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
+                        sh '''
 
-                    mkdir -p k8s-temp
-                    cd k8s-temp
-                    
-                    git clone ${REPO_URL}
+                            mkdir -p k8s-temp
+                            cd k8s-temp
+                            
+                            git clone ${REPO_URL}
 
-                    cd Zoom-Clone-K8s
-                    sed -i "s#shady25/zoomclone:V21#shady25/zoomclone:V$BUILD_NUMBER#g" ./kubernetes/zoom-deploy.yml
+                            cd Zoom-Clone-K8s
+                            sed -i "s#shady25/zoomclone:V21#shady25/zoomclone:V$BUILD_NUMBER#g" ./kubernetes/zoom-deploy.yml
 
-                    git config --global --add safe.directory /var/lib/jenkins/workspace/Zoom-Clone/k8s-temp/Zoom-Clone-K8s
-                    git config user.email "shadyosama554@gmail.com" 
-                    git config user.name "shadyosama9"
+                            git config --global --add safe.directory /var/lib/jenkins/workspace/Zoom-Clone/k8s-temp/Zoom-Clone-K8s
+                            git config --global user.name "${GIT_USERNAME}"
+                            git config --global user.password "${GIT_PASSWORD}"
+
+                            git add .
+                            git commit -m "changing image tag to V:$BUILD_NUMBER"
+                            git push --set-upstream origin main
 
 
-                    git add .
-                    git commit -m "changing image tag to V:$BUILD_NUMBER"
-                    git push
-
-                    rm -rf k8s-temp
-                '''
+                            rm -rf k8s-temp
+                        '''
+                    }
+                }
             }
         }
     }
