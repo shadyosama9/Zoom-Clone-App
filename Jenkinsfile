@@ -119,7 +119,6 @@ pipeline{
 
                     git config user.email "shadyosama554@gmail.com"
                     git config user.name "shadyosama9"
-                    git remote add target ${REPO_URL}
 
 
                     git add .
