@@ -156,7 +156,7 @@ sudo apt install openjdk-21-jdk
 Follow the instructions in the [Jenkins installation guide](https://www.jenkins.io/doc/book/installing/linux/#debianubuntu).
 
 - Install Docker:
-Follow the instructions in the [Docker installation guide] (https://docs.docker.com/engine/install/ubuntu/).
+Follow the instructions in the [Docker installation guide](https://docs.docker.com/engine/install/ubuntu/).
 
 - Add Jenkins to the Docker group:
 
@@ -164,7 +164,7 @@ Follow the instructions in the [Docker installation guide] (https://docs.docker.
 sudo usermod -aG docker jenkins
 ```
 - Install Trivy:
-Follow the instructions in the [Trivy installation guide] (https://aquasecurity.github.io/trivy/v0.18.3/installation/).
+Follow the instructions in the [Trivy installation guide](https://aquasecurity.github.io/trivy/v0.18.3/installation/).
 
 
 
