@@ -23,11 +23,14 @@
 
 ## <a name="introduction">🤖 Introduction</a>
 
-Built with the latest Next.js and TypeScript, this project replicates Zoom, a widely used video conferencing tool. It enables users to securely log in, create meetings and access various meeting functionalities such as recording, screen sharing, and managing participants.
+This repository is part of a collection of three repositories that follow GitOps principles to deploy a Zoom clone application to an AWS EKS cluster. The application was originally created by [Adrian Hajdin](https://github.com/adrianhajdin/zoom-clone).
 
-If you're getting started and need assistance or face any bugs, join our active Discord community with over 30 thousand members. It's a place where people help each other out.
+The other repositories in this collection are:
+- [Infrastructure as Code (IaC) repository](https://github.com/shadyosama9/Zoom-Clone-Infra)
+- [Kubernetes configuration repository](https://github.com/shadyosama9/Zoom-Clone-K8s)
 
-<a href="https://discord.com/invite/n6EdbFJ" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e" /></a>
+This repository includes the Dockerfile and Jenkinsfile, which are used to containerize the application and set up the CI/CD pipeline.
+
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
