@@ -56,7 +56,9 @@ Make sure you have the following installed on your machine:
 
 - [Git](https://git-scm.com/)
 - [Node.js](https://nodejs.org/en)
-- [npm](https://www.npmjs.com/) (Node Package Manager)<br>
+- [npm](https://www.npmjs.com/) (Node Package Manager)
+
+<br>
 
 **Cloning the Repository**
 
@@ -91,6 +93,7 @@ STREAM_SECRET_KEY=
 ```
 
 Replace the placeholder values with your actual Clerk & getstream credentials. You can obtain these credentials by signing up on the [Clerk website](https://clerk.com/) and [getstream website](https://getstream.io/)
+
 <br>
 
 **Running the Project**
@@ -109,25 +112,31 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 
 Make sure you have Docker installed on your machine. You can download and install Docker from the official 
 
-- [Docker website](https://www.docker.com/get-started).<br>
+- [Docker website](https://www.docker.com/get-started).
+
+<br>
 
 **Set Up Environment Variables**
 
-Create a new file named `.env` in the root of your project and add the same content as mentioned above.<br>
+Create a new file named `.env` in the root of your project and add the same content as mentioned above.
+
+<br>
 
 **Building the Docker Image**
 
 ```bash
 docker build -t <image-name> .
 ```
-Replace `<image-name>` with a name of your choice for the Docker image.<br>
+Replace `<image-name>` with a name of your choice for the Docker image.
+
+<br>
 
 **Running the Docker Container**
 
 ```bash
 docker run -p 3000:3000 <image-name>
 ```
-This command will start the app, making it accessible at [http://localhost:3000](http://localhost:3000) in your browser.<br>
+This command will start the app, making it accessible at [http://localhost:3000](http://localhost:3000) in your browser.
 
 
 
@@ -140,7 +149,9 @@ Jenkins is used with a declarative approach to establish the CI/CD pipeline for 
 **Prerequisites**
 
 - An AWS account 
-- Make sure you created the infrastructer in [Infrastructure as Code (IaC) repository](https://github.com/shadyosama9/Zoom-Clone-Infra)<br>
+- Make sure you created the infrastructer in [Infrastructure as Code (IaC) repository](https://github.com/shadyosama9/Zoom-Clone-Infra)
+
+<br>
 
 **Jenkins And Dependencies Installation**
 
@@ -169,7 +180,9 @@ Follow the instructions in the [Docker installation guide](https://docs.docker.c
 sudo usermod -aG docker jenkins
 ```
 - Install Trivy:
-Follow the instructions in the [Trivy installation guide](https://aquasecurity.github.io/trivy/v0.18.3/installation/).<br>
+Follow the instructions in the [Trivy installation guide](https://aquasecurity.github.io/trivy/v0.18.3/installation/).
+
+<br>
 
 
 **Jenkins Set Up**
@@ -183,7 +196,9 @@ Replace `<ec2-public-ip>` with the public ip of jenkins ec2 machine.
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 
-- Install the suggested plugins<br>
+- Install the suggested plugins
+
+<br>
 
 **Additional Plugins Used For The Pipeline**
 
