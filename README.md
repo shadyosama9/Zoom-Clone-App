@@ -263,3 +263,45 @@ Splunk is utilized to monitor the Jenkins server.
 
 - Once the installation is complete, you can access it at [http://\<ec2-public-ip\>:8000](http://<ec2-public-ip>:8000).
 Replace `<ec2-public-ip>` with the public ip of splunk ec2 machine.
+
+
+**Intergate Splunk With Jenkins**
+
+
+1. In Splunk Dashboard, click on **Apps** → **Find more apps**.
+2. Search for **Jenkins** in the search bar.
+3. Click on the **Splunk app for Jenkins** and install it.
+4. Provide your Splunk Account credentials.
+5. Click on **Agree and install**.
+6. Click on **Go home**.
+7. Verify that Jenkins has been added on the homepage of Splunk.
+8. Go to **Settings** > **Data Inputs** in the Splunk web interface.
+9. Click on **HTTP Event Collector**.
+10. Click on **Global Settings**.
+11. Set **All tokens** to enabled.
+12. Uncheck **SSL enable**.
+13. Use **8088** port and click on **Save**.
+14. Click on **New token**.
+15. Provide a name and click **Next**.
+16. Click on **Review**.
+17. Click on **Submit**.
+18. Click on **Start searching**.
+19. Copy your token and keep it safe.
+20. Go to **Settings** > **Data Inputs** in the Splunk web interface.
+21. Click on the **HTTP Event Collector**.
+22. Copy your token again and keep it safe.
+
+
+23. Go to the Jenkins dashboard.
+24. Click on **Manage Jenkins** → **Plugins** → **Available plugins**.
+25. Search for **Splunk** and install it.
+26. Click on **Manage Jenkins** → **System**.
+27. Enable **HTTP input host** as **SPLUNK PUBLIC IP**.
+28. Input the **HTTP token** that you generated in Splunk.
+29. Add **Jenkins IP** and apply.
+30. In the Jenkins dashboard under Splunk, click on **Test connection**.
+
+
+31. Restart your Splunk machine:
+32. Restart Jenkins and log in again using:
+33. Go to Splunk and click on the Jenkins app to view monitoring output.
