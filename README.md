@@ -43,6 +43,7 @@ This repository includes the Dockerfile and Jenkinsfile, which are used to conta
 - Tailwind CSS
 - Docker
 - Jenkins
+- Splunk
 
 ## <a name="quick-start">🤸 Quick Start</a>
 
@@ -201,7 +202,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    Runs SonarQube analysis on the project using the specified configuration to ensure code quality and detect issues.
 
 3. **Install Dependencies For Check**  
-   Installs the necessary Node.js dependencies required for the application using npm.
+   Installs the necessary Node.js dependencies required for running the OWASP Dependency-Check analysis.
 
 4. **Running Dependency Check**  
    Executes OWASP Dependency-Check to analyze the project for vulnerabilities and publishes the report.
@@ -225,3 +226,4 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
     Clones the Kubernetes repository, updates the image tag in the deployment file with the current build number, and pushes the changes back to GitHub.
 
 
+- Make sure to change the environment values and crediential ids in the pipeline to yours
