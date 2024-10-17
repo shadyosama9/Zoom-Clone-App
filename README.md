@@ -261,7 +261,6 @@ Splunk is utilized to monitor the Jenkins server.
 5. **Start Splunk:**
    ```bash
    sudo /opt/splunk/bin/splunk start
-   
 
 - Once the installation is complete you access it on [http://<ec2-public-ip>:8000](http://<ec2-public-ip>:8000)
 Replace `<ec2-public-ip>` with the public ip of splunk ec2 machine.
