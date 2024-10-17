@@ -137,7 +137,7 @@ Jenkins is used with a declarative approach to establish the CI/CD pipeline for 
 - An AWS account 
 - Make sure you created the infrastructer in [Infrastructure as Code (IaC) repository](https://github.com/shadyosama9/Zoom-Clone-Infra)
 
-**Jenkins Installation**
+**Jenkins And Dependencies Installation**
 
 - Login to the Jenkins EC2 machine.
 - Run the following command to update the package list:
@@ -167,5 +167,28 @@ sudo usermod -aG docker jenkins
 Follow the instructions in the [Trivy installation guide](https://aquasecurity.github.io/trivy/v0.18.3/installation/).
 
 
+**Jenkins Set Up**
+
+- Once jenkins and the other dependencies are installed you access it on [http://<ec2-public-ip>:8080](http://<ec2-public-ip>:8080)
+
+Replace `<ec2-public-ip>` with the public ip of jenkins ec2 machine.
+
+- To get the admin password run:
+```bash
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+```
+
+- Install the suggested plugins
+
+**Additional Plugins Used For The Pipeline**
+
+- SonarQube Scanner for Jenkins
+- OWASP Dependency-Check Plugin
+- Docker
+- Docker Pipeline
+- Docker API Plugin
+- Docker Commons Plugin
+- Pipeline: Stage View Plugin
+- NodeJS Plugin
 
 
