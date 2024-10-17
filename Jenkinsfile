@@ -11,9 +11,11 @@ pipeline{
 
         DOCKER_REGISTRY = "shady25/zoomclone"
         DOCKER_CRED = "DOCKER_CREDS"
-        REPO_NAME = "Zoom-Clone-K8s"
-        REPO_URL = "https://github.com/shadyosama9/Zoom-Clone-K8s.git"
-        GIT_USERNAME = "shadyosama9"
+        GITHUB_REPO_NAME = "Zoom-Clone-K8s"
+        GITHUB_REPO_URL = "https://github.com/shadyosama9/Zoom-Clone-K8s.git"
+        GITHUB_USERNAME = "shadyosama9"
+        GITHUB_EMAIL = "shadyosama554@gmail.com"
+        ZOOM_K8s_IMAGE = "shady25/zoomclone"
     }
 
     stages {
@@ -44,42 +46,42 @@ pipeline{
 
 
 
-        // stage('Sonar Cloud Analysis'){
-        //     environment{
-        //         scannerHome = tool 'Zoom-Sonar'
-        //     }
+        stage('Sonar Cloud Analysis'){
+            environment{
+                scannerHome = tool 'Zoom-Sonar'
+            }
 
-        //     steps {
-        //         withSonarQubeEnv('SonarCloud'){
-        //             sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=zoom-clone-project \
-        //                 -Dsonar.projectName=Zoom-Clone-Project \
-        //                 -Dsonar.organization=zoom-clone \
-        //                 -Dsonar.projectVersion=1.0 
-        //                 '''
-        //         }
-        //     }
-        // }
+            steps {
+                withSonarQubeEnv('SonarCloud'){
+                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=zoom-clone-project \
+                        -Dsonar.projectName=Zoom-Clone-Project \
+                        -Dsonar.organization=zoom-clone \
+                        -Dsonar.projectVersion=1.0 
+                        '''
+                }
+            }
+        }
 
 
-        // stage('Install Dependencies For Check'){
-        //     steps{
-        //         sh 'npm install'
-        //     }
-        // }
+        stage('Install Dependencies For Check'){
+            steps{
+                sh 'npm install'
+            }
+        }
 
-        // stage('Running Dependecncy Check'){
-        //     steps{
-        //         dependencyCheck additionalArguments: '-f XML --disableYarnAudit -s .',
-        //                   odcInstallation: 'Zoom-OWASP'
-        //         dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
-        //     }
-        // }
+        stage('Running Dependecncy Check'){
+            steps{
+                dependencyCheck additionalArguments: '-f XML --disableYarnAudit -s .',
+                          odcInstallation: 'Zoom-OWASP'
+                dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
 
-        // stage('Running Trivy Analysis'){
-        //     steps{
-        //         sh 'trivy fs . > trivy-code.txt'
-        //     }
-        // }
+        stage('Running Trivy Analysis'){
+            steps{
+                sh 'trivy fs . > trivy-code.txt'
+            }
+        }
 
         stage('Building Docker Image'){
             steps{
@@ -89,11 +91,11 @@ pipeline{
             }
         }
 
-        // stage('Running Trivy On Docker'){
-        //     steps{
-        //         sh "trivy image $DOCKER_REGISTRY:V$BUILD_NUMBER  > trivy-docker.txt"
-        //     }
-        // }
+        stage('Running Trivy On Docker'){
+            steps{
+                sh "trivy image $DOCKER_REGISTRY:V$BUILD_NUMBER  > trivy-docker.txt"
+            }
+        }
 
         stage('Uploading To DokcerHub'){
             steps{
@@ -123,17 +125,17 @@ pipeline{
                             mkdir -p k8s-temp
                             cd k8s-temp
                             
-                            git clone ${REPO_URL}
+                            git clone ${GITHUB_REPO_URL}
 
                             cd Zoom-Clone-K8s
-                            sed -i "s#shady25/zoomclone:V[0-9]*#shady25/zoomclone:V$BUILD_NUMBER#g" ./kubernetes/zoom-deploy.yml
+                            sed -i "s#${ZOOM_K8s_IMAGE}:V[0-9]*#${ZOOM_K8s_IMAGE}:V$BUILD_NUMBER#g" ./kubernetes/zoom-deploy.yml
                             
-                            git config --global user.email "shadyosama554@gmail.com"
-                            git config --global user.name "${GIT_USERNAME}"
+                            git config --global user.email "${GITHUB_EMAIL}"
+                            git config --global user.name "${GITHUB_USERNAME}"
 
                             git add .
                             git commit -m "changing image tag to V:$BUILD_NUMBER"
-                            git push https://${GITHUB_TOKEN}@github.com/${GIT_USERNAME}/${REPO_NAME} HEAD:main
+                            git push https://${GITHUB_TOKEN}@github.com/${GITHUB_USERNAME}/${GITHUB_REPO_NAME} HEAD:main
 
 
                         '''
