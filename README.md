@@ -289,7 +289,7 @@ Replace `<ec2-public-ip>` with the public ip of splunk ec2 machine.
 19. Copy your token and keep it safe.
 20. Go to **Settings** > **Data Inputs** in the Splunk web interface.
 21. Click on the **HTTP Event Collector**.
-22. Copy your token again and keep it safe.  
+22. Copy your token again and keep it safe.<br><br> 
 
 
 23. Go to the Jenkins dashboard.
@@ -299,7 +299,7 @@ Replace `<ec2-public-ip>` with the public ip of splunk ec2 machine.
 27. Enable **HTTP input host** as **SPLUNK PUBLIC IP**.
 28. Input the **HTTP token** that you generated in Splunk.
 29. Add **Jenkins IP** and apply.
-30. In the Jenkins dashboard under Splunk, click on **Test connection**.  
+30. In the Jenkins dashboard under Splunk, click on **Test connection**.<br><br>
 
 
 31. Restart your Splunk machine:
