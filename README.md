@@ -226,4 +226,4 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
     Clones the Kubernetes repository, updates the image tag in the deployment file with the current build number, and pushes the changes back to GitHub.
 
 
-- Make sure to change the environment values and crediential ids in the pipeline to yours
+> **Note:** Make sure to change the environment values and crediential ids in the pipeline to yours
