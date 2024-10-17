@@ -98,7 +98,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to view the 
 
 ---
 
-### Running the Project with Docker
+### Running the Project with Docker Locally
 
 **Prerequisites**
 
@@ -134,5 +134,38 @@ Jenkins is used with a declarative approach to establish the CI/CD pipeline for 
 
 **Prerequisites**
 
-Make sure you created the infrastructer in [Infrastructure as Code (IaC) repository](https://github.com/shadyosama9/Zoom-Clone-Infra)
+- An AWS account 
+- Make sure you created the infrastructer in [Infrastructure as Code (IaC) repository](https://github.com/shadyosama9/Zoom-Clone-Infra)
+
+**Jenkins Installation**
+
+- Login to the Jenkins EC2 machine.
+- Run the following command to update the package list:
+
+```bash
+sudo apt update
+```
+
+- Install JDK:
+
+```bash
+sudo apt install openjdk-21-jdk
+```
+
+- Install Jenkins:
+Follow the instructions in the [Jenkins installation guide](https://www.jenkins.io/doc/book/installing/linux/#debianubuntu).
+
+- Install Docker:
+Follow the instructions in the Docker installation guide.
+
+- Add Jenkins to the Docker group:
+
+```bash
+sudo usermod -aG docker jenkins
+```
+- Install Trivy:
+Follow the instructions in the Trivy installation guide.
+
+
+
 
