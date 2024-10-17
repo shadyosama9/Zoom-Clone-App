@@ -192,3 +192,36 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 - NodeJS Plugin
 
 
+**Pipeline Stages**
+
+1. **Create Or Update .env File**  
+   Checks for the existence of the `.env` file; if not present, it creates one from a credentialed secret file. If it exists, it updates it if the content has changed.
+
+2. **Sonar Cloud Analysis**  
+   Runs SonarQube analysis on the project using the specified configuration to ensure code quality and detect issues.
+
+3. **Install Dependencies For Check**  
+   Installs the necessary Node.js dependencies required for the application using npm.
+
+4. **Running Dependency Check**  
+   Executes OWASP Dependency-Check to analyze the project for vulnerabilities and publishes the report.
+
+5. **Running Trivy Analysis**  
+   Performs a security scan of the filesystem using Trivy and saves the output to a file.
+
+6. **Building Docker Image**  
+   Builds a Docker image for the application using the specified Docker registry and tags it with the build number.
+
+7. **Running Trivy On Docker**  
+   Runs a Trivy scan on the newly built Docker image to identify any vulnerabilities.
+
+8. **Uploading To DockerHub**  
+   Pushes the built Docker image to Docker Hub using the specified credentials.
+
+9. **CleanUp**  
+   Cleans up the Docker environment by pruning unused Docker objects and removing `node_modules`.
+
+10. **Pushing Image Version To K8s Repo**  
+    Clones the Kubernetes repository, updates the image tag in the deployment file with the current build number, and pushes the changes back to GitHub.
+
+
