@@ -20,6 +20,7 @@
 1. 🤖 [Introduction](#introduction)
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🤸 [Quick Start](#quick-start)
+4. 🔧 [CI/CD Pipeline](#jenkins)
 
 ## <a name="introduction">🤖 Introduction</a>
 
@@ -123,5 +124,10 @@ docker run -p 3000:3000 <image-name>
 ```
 This command will start the app, making it accessible at [http://localhost:3000](http://localhost:3000) in your browser.
 
+
+
+---
+
+## <a name="jenkins">🔧 CI/CD Pipeline</a>
 
 
