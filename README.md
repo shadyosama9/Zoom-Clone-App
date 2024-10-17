@@ -40,7 +40,8 @@ This repository includes the Dockerfile and Jenkinsfile, which are used to conta
 - getstream
 - shadcn
 - Tailwind CSS
-
+- Docker
+- Jenkins
 
 ## <a name="quick-start">🤸 Quick Start</a>
 
@@ -93,4 +94,33 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
+
+
+### Running the Project with Docker
+
+**Prerequisites**
+
+Make sure you have Docker installed on your machine. You can download and install Docker from the official 
+
+- [Docker website](https://www.docker.com/get-started).
+
+**Set Up Environment Variables**
+
+Create a new file named `.env` in the root of your project and add the same content as mentioned above.
+
+**Building the Docker Image**
+
+```bash
+docker build -t <image-name> .
+```
+Replace `<image-name>` with a name of your choice for the Docker image.
+
+**Running the Docker Container**
+
+```bash
+docker run -p 3000:3000 <image-name>
+```
+This command will start the app, making it accessible at [http://localhost:3000](http://localhost:3000) in your browser.
+
+
 
