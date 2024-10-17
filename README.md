@@ -130,4 +130,9 @@ This command will start the app, making it accessible at [http://localhost:3000]
 
 ## <a name="jenkins">🔧 CI/CD Pipeline</a>
 
+Jenkins is used with a declarative approach to establish the CI/CD pipeline for the application.
+
+**Prerequisites**
+
+Make sure you created the infrastructer in [Infrastructure as Code (IaC) repository](https://github.com/shadyosama9/Zoom-Clone-Infra)
 
