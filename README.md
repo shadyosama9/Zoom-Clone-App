@@ -231,6 +231,37 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 ---
 
-## <a name="splunk">🤖 Monitoring</a>
+## <a name="splunk">🔍 Monitoring</a>
+
+Splunk is utilized to monitor the Jenkins server.
+
+**Prerequisites**
+
+- An AWS account 
+- Make sure you created the infrastructer in [Infrastructure as Code (IaC) repository](https://github.com/shadyosama9/Zoom-Clone-Infra)
+- Splunk account
 
 
+**Splunk Installation**
+
+1. **Connect to your second instance using Putty or MobaXterm.**
+2. **Download Splunk using the wget command:**
+   ```bash
+   wget -O splunk-9.1.1-64e843ea36b1-linux-2.6-amd64.deb "https://download.splunk.com/products/splunk/releases/9.1.1/linux/splunk-9.1.1-64e843ea36b1-linux-2.6-amd64.deb"
+  ```
+3. **Install Splunk:**  
+   ```bash
+   sudo dpkg -i splunk-9.1.1-64e843ea36b1-linux-2.6-amd64.deb
+  ```
+4. **Enable Splunk to start on boot:**
+
+   ```bash
+   sudo /opt/splunk/bin/splunk enable boot-start
+   ```
+5. **Start Splunk:**
+   ```bash
+   sudo /opt/splunk/bin/splunk start
+   ```
+
+- Once the installation is complete you access it on [http://<ec2-public-ip>:8000](http://<ec2-public-ip>:8000)
+Replace `<ec2-public-ip>` with the public ip of splunk ec2 machine.
