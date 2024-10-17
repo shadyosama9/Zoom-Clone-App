@@ -21,6 +21,7 @@
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🤸 [Quick Start](#quick-start)
 4. 🔧 [CI/CD Pipeline](#jenkins)
+5. 🔍 [Monitoring](#splunk)
 
 ## <a name="introduction">🤖 Introduction</a>
 
@@ -191,7 +192,7 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 - Docker Commons Plugin
 - Pipeline: Stage View Plugin
 - NodeJS Plugin
-
+- Splunk Plugin
 
 **Pipeline Stages**
 
@@ -227,3 +228,9 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 
 > **Note:** Make sure to change the environment values and crediential ids in the pipeline to yours
+
+---
+
+## <a name="splunk">🤖 Monitoring</a>
+
+
