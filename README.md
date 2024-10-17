@@ -171,7 +171,7 @@ Follow the instructions in the [Trivy installation guide](https://aquasecurity.g
 
 **Jenkins Set Up**
 
-- Once jenkins and the other dependencies are installed you access it on [http://<ec2-public-ip>:8080](http://<ec2-public-ip>:8080)
+- Once jenkins and the other dependencies are installed you access it on [http://\<ec2-public-ip\>:8000](http://<ec2-public-ip>:8000)
 
 Replace `<ec2-public-ip>` with the public ip of jenkins ec2 machine.
 
