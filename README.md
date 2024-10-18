@@ -200,6 +200,7 @@ Replace `<ec2-public-ip>` with the public ip of jenkins ec2 machine.
 </div>
 
 <br>
+
 - To get the admin password run:
 ```bash
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
