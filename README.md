@@ -325,3 +325,11 @@ Replace `<ec2-public-ip>` with the public ip of splunk ec2 machine.
 31. Restart your Splunk machine:
 32. Restart Jenkins and log in again using:
 33. Go to Splunk and click on the Jenkins app to view monitoring output.
+
+<br>
+
+<div align="center">
+  <br />
+      <img src="https://zoomclone-images.s3.amazonaws.com/splunk.webp" alt="Splunk Page">
+  <br />
+</div>
