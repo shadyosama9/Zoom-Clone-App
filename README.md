@@ -191,6 +191,15 @@ Follow the instructions in the [Trivy installation guide](https://aquasecurity.g
 
 Replace `<ec2-public-ip>` with the public ip of jenkins ec2 machine.
 
+<br>
+
+<div align="center">
+  <br />
+      <img src="https://zoomclone-images.s3.amazonaws.com/Jenkins-login.webp" alt="Jenkins Login Page">
+  <br />
+</div>
+
+<br>
 - To get the admin password run:
 ```bash
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
